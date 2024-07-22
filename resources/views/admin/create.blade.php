@@ -98,7 +98,6 @@ label {
 }
 
 .btn-success {
-  display: flex;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -196,6 +195,29 @@ footer .fab {
             </div>
             <div class="card">
                 <div class="card-body">
+                    <div class="form-group">
+                        <label for="pendaftaran">Jenis Permohonan</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="pendaftaran" id="inlineRadio1" value="pendahtaran" {{ old('pendaftaran') == 'pendahtaran' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="inlineRadio1">Pendaftaran</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="pendaftaran" id="inlineRadio1" value="pengaktifan" {{ old('pendaftaran') == 'pengaktifan' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="inlineRadio1">Pengaktifan</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="pendaftaran" id="inlineRadio2" value="penghapusan" {{ old('pendaftaran') == 'penghapusan' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="inlineRadio2">Penghapusan</label>
+                        </div>
+
+                        <!-- error message untuk pendaftaran -->
+                        @error('pendaftaran')
+                            <div class="alert alert-danger mt-2">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
                     <div class="row">
 
                         <div class="col">
@@ -254,10 +276,16 @@ footer .fab {
                             <div class="form-group">
                                 <label for="jabatan">Jabatan</label>
                                 <select id="jabatan" name="jabatan" class="form-control @error('jabatan') is-invalid @enderror">
-                                    <option value="">Pilih Jabatan</option>
+                                    <option value="">Pilih Jabatan Anda</option>
+                                    <option value="Teller" {{ old('jabatan') == 'Teller' ? 'selected' : '' }}>Teller</option>
+                                    <option value="Customer Service" {{ old('jabatan') == 'Customer Service' ? 'selected' : '' }}>Customer Service</option>
+                                    <option value="Marketing" {{ old('jabatan') == 'Marketing' ? 'selected' : '' }}>Marketing</option>
+                                    <option value="Staf/Back Office" {{ old('jabatan') == 'Staf/Back Office' ? 'selected' : '' }}>Staf/Back Office</option>
+                                    <option value="Supervisor" {{ old('jabatan') == 'Supervisor' ? 'selected' : '' }}>Supervisor</option>
+                                    <option value="Pimpinan KK" {{ old('jabatan') == 'Pimpinan KK' ? 'selected' : '' }}>Pimpinan KK</option>
+                                    <option value="Pimpinan KCP" {{ old('jabatan') == 'Pimpinan KCP' ? 'selected' : '' }}>Pimpinan KCP</option>
                                     <option value="Manager" {{ old('jabatan') == 'Manager' ? 'selected' : '' }}>Manager</option>
-                                    <option value="Staff" {{ old('jabatan') == 'Staff' ? 'selected' : '' }}>Staff</option>
-                                    <option value="Intern" {{ old('jabatan') == 'Intern' ? 'selected' : '' }}>Intern</option>
+                                    <option value="Pimpinan Cabang" {{ old('jabatan') == 'Pimpinan  Cabang' ? 'selected' : '' }}>Pimpinan  Cabang</option>
                                 </select>
                                 <!-- error message untuk jabatan -->
                                 @error('jabatan')
@@ -291,27 +319,9 @@ footer .fab {
 
                     <div class="form-group">
                         <label for="alasan">Alasan</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alasan"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alasan" placeholder="Masukan Alasan Anda"></textarea>
                         <!-- error message untuk alasan -->
                         @error('alasan')
-                            <div class="alert alert-danger mt-2">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="pendaftaran">Pendaftaran</label>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="pendaftaran" id="inlineRadio1" value="pengaktifan" {{ old('pendaftaran') == 'pengaktifan' ? 'checked' : '' }}>
-                            <label class="form-check-label" for="inlineRadio1">Pengaktifan</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="pendaftaran" id="inlineRadio2" value="penghapusan" {{ old('pendaftaran') == 'penghapusan' ? 'checked' : '' }}>
-                            <label class="form-check-label" for="inlineRadio2">Penghapusan</label>
-                        </div>
-
-                        <!-- error message untuk pendaftaran -->
-                        @error('pendaftaran')
                             <div class="alert alert-danger mt-2">
                                 {{ $message }}
                             </div>
